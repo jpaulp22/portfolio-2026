@@ -1,0 +1,71 @@
+---
+/* Layout.astro : grid structure */
+const { 
+title = "Jean Paul Perez-Saldarriaga - Official Website",
+description = "Jean Paul Perez-Saldarriaga is a Colombian-American multidiscplinary designer and musician based in Queens, NY specializing in lo-fi art and tangible media.",
+image = "" //1200x630 img in /public folder
+} = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{title}</title>
+        <meta name="description" content={description}>
+        <meta property="og:type" content="website">
+        <meta property="og:title" content={title}>
+        <meta property="og:description" content={description}>
+        <meta property="og:image" content={image}>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content={title}>
+        <meta name="twitter:description" content={description}>
+        <meta name="twitter:image" content={image}>
+
+    </head>
+    <body>
+        <div class="container">
+            <aside class="left-col">
+                <slot name="left-col"/>
+            </aside>
+            <main class="right-col">
+                <slot/>
+            </main>
+        </div>
+    </body>
+    <style is:global>
+        :root{
+            --white: #ffffff;
+            --black: #0c0e0d;
+            --dgrey: #2f3430;
+            --lgrey: #e8eae8;
+            --accent: #4b4646;
+        }
+
+        html{
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;            
+        }
+
+        @media (min-width: 992px){
+            .container{
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+            }
+
+            .left-col{
+                grid-column: span 4;
+            }
+
+            .right-col{
+                grid-column: span 8;
+            }
+        }
+    </style>
+</html>
