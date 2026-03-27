@@ -26,9 +26,21 @@ image = "" //1200x630 img in /public folder
     <body>
         <div class="container">
             <aside class="left-col">
-                <slot name="left-col"/>
+                <img class="profile-img" src="../../public/img/jean-paul-4.jpeg"/>
+                <p>Jean Paul Perez-Saldarriaga is a Colombian-American multidisciplinary designer and musician based in Queens, NY. His practice specializes in lo-fi art and tangible media. His professional experience includes over three years as an in-house web designer for JWiz Inc. and over five years of independent freelancing. He holds a BA in Media Studies from CUNY Hunter College and serves as a Board Member for the sexual wellness non-profit organization, My Exxxperience.</p>
+                <p>Jean Paul’s work is an extension of his love for shoegaze, analog craft, and the local DIY music scene. He is also 1/5 of the alternative rock band, swimteam VHS.</p>
+                <p lang="es">Jean Paul Perez-Saldarriaga es un diseñador multidisciplinario y músico colombo-americano radicado en Queens, NY. Su práctica se especializa en el arte de baja-fidelidad y los medios tangibles. Su experiencia profesional incluye más de tres años como diseñador web vinculado a JWiz Inc. y más de cinco años de colaboración independiente. Cuenta con una licenciatura en Estudios de Medios de CUNY Hunter College y forma parte de la junta directiva de la organización sin ánimo de lucro de bienestar sexual, My Exxxperience.</p>
+                <p lang="es">El trabajo de Jean Paul es una extensión de su amor por el shoegaze, el oficio analógico, y la escena musical autogestionada local. También es 1/5 de la banda de rock alternativo, swimteam VHS.</p>
+                <ul>
+                    <li><a href="mailto:me@jeanpaul.info">me@jeanpaul.info</a></li>
+                    <li><a href="https://instagram.com/angryson.404">@angryson.404</a></li>
+                </ul>
+                
             </aside>
             <main class="right-col">
+                <nav>
+                    <a href="">HOME / INICIO</a>
+                </nav>
                 <slot/>
             </main>
         </div>
@@ -79,6 +91,13 @@ image = "" //1200x630 img in /public folder
             --dgrey: #2f3430;
             --lgrey: #e8eae8;
             --accent: #4b4646;
+
+            --s1: .5rem;
+            --s2: .8125rem;
+            --s3: 1.3125rem;
+            --s4: 2.125rem;
+            --s5: 3.4375rem;
+            --s6: 5.5625rem;
         }
 
         html{
@@ -89,9 +108,47 @@ image = "" //1200x630 img in /public folder
             line-height: 1.5;
         }
 
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        body{ margin: 0; padding: 0; }
+        h1{ font-weight: var(--w-bold); }
+        h2{ font-weight: var(--w-med); }
+
+        .label{
+            font-weight: var(--w-light);
+            font-family: var(--font-mono);
+            color: var(--accent);
+        }
+
         .container{
             display: flex;
-            flex-direction: column;            
+            flex-direction: column-reverse;
+        }
+
+        .left-col{ 
+            background-color: var(--lgrey);
+            padding-left: var(--s3);                       
+            padding-right: var(--s3);
+            padding-top: var(--s3);
+            padding-bottom: var(--s3);            
+        }
+
+        .profile-img{
+            aspect-ratio: 3/4;
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .left-col a{
+            display: inline-block;
+        }
+
+        p[lang="es"]{
+            color: var(--dgrey);
         }
 
         @media (min-width: 992px){
@@ -100,13 +157,8 @@ image = "" //1200x630 img in /public folder
                 grid-template-columns: repeat(12, 1fr);
             }
 
-            .left-col{
-                grid-column: span 4;
-            }
-
-            .right-col{
-                grid-column: span 8;
-            }
+            .left-col{ grid-column: span 4; }
+            .right-col{ grid-column: span 8; }
         }
     </style>
 </html>
