@@ -34,7 +34,46 @@ image = "" //1200x630 img in /public folder
         </div>
     </body>
     <style is:global>
+        @font-face {
+            font-family: 'Ancizar Sans';
+            src: url('/fonts/AncizarSans-Variable.ttf') format('truetype-variations');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: auto;
+        }
+
+        @font-face {
+            font-family: 'Ancizar Sans';
+            src: url('/fonts/AncizarSans-Italic-Variable.ttf') format('truetype-variations');
+            font-weight: 100 900;
+            font-style: italic;
+            font-display: auto;
+        }
+
+        @font-face {
+            font-family: 'Sometype Mono';
+            src: url('/fonts/SometypeMono-Italic-Variable.ttf') format('truetype-variations');
+            font-weight: 400 700;
+            font-style: italic;
+            font-display: auto;
+        }
+
+        @font-face {
+            font-family: 'Sometype Mono';
+            src: url('/fonts/SometypeMono-Variable.ttf') format('truetype-variations');
+            font-weight: 400 700;
+            font-style: normal;
+            font-display: auto;
+        }
+
         :root{
+            --font-sans: 'Ancizar Sans', system-ui, sans-serif;
+            --font-mono: 'Sometype Mono', monospace;
+            --w-light: 300;
+            --w-reg: 400;
+            --w-med: 500;
+            --w-bold: 700;
+
             --white: #ffffff;
             --black: #0c0e0d;
             --dgrey: #2f3430;
@@ -44,6 +83,8 @@ image = "" //1200x630 img in /public folder
 
         html{
             background-color: var(--white);
+            font-family: var(--font-sans);
+            font-weight: var(--w-reg);
             color: var(--black);
             line-height: 1.5;
         }
