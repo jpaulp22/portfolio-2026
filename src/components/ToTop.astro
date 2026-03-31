@@ -1,0 +1,39 @@
+<button id="to-top" aria-label="Scroll to top" class="hidden"><span class="chevron">TOP</span></button>
+
+<script>
+    const toTop = document.getElementById('to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            toTop.classList.remove('hidden');
+        } else {
+            toTop.classList.add('hidden');
+        }
+    });
+
+    toTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0 });
+    });
+</script>
+
+<style>
+    #to-top{
+        position: fixed;
+        right: var(--s1);
+        bottom: var(--s5);
+        z-index: 100;
+        background: var(--accent);
+        color: var(--lgrey);
+        font-family: var(--font-mono);
+        border: none;
+        padding: 0 var(--s1);
+    }
+
+    #to-top.hidden{
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #to-top .chevron{
+        font-size: 1.2rem;
+    }
+</style>

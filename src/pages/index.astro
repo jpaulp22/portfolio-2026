@@ -4,17 +4,32 @@ import Icon from '../components/Icon.astro';
 ---
 
 <Layout title="HOME / INICIO">
-	<div class="icon-container">
-  		<Icon/>
+	<div class="hero-container">
+		<div class="grid-top"></div>
+		<div class="grid-mid"><Icon/></div>
+		<div class="'grid-bottom">
+			<a href="#about" class="scroll-link">
+				<span class="chevron">v</span>
+				<span>ABOUT ME / SOBRE MÍ</span>
+				<span class="chevron">v</span>
+			</a>
+		</div>
 	</div>
 </Layout>
 
 <style>
-	.icon-container{
-		display: flex;
-		flex-direction: column;
+	.hero-container{
+		display: grid;
+		grid-template-rows: 1fr auto 1fr;
 		justify-content: center;
 		align-items: center;
 		min-height: 86svh;
+		gap: var(--s6);
+	}
+
+	.scroll-link{
+		display: flex;
+		align-items: center;
+		gap: var(--s3);
 	}
 </style>

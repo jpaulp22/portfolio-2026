@@ -1,5 +1,6 @@
 ---
 /* Layout.astro : grid structure */
+import ToTop from '../components/ToTop.astro';
 const { 
 title = "Jean Paul Perez-Saldarriaga - Official Website",
 description = "Jean Paul Perez-Saldarriaga is a Colombian-American multidiscplinary designer and musician based in Queens, NY specializing in lo-fi art and tangible media.",
@@ -25,17 +26,16 @@ image = "" //1200x630 img in /public folder
     </head>
     <body>
         <div class="container">
-            <aside class="left-col">
+            <aside class="left-col" id="about">
                 <img class="profile-img" src="/img/jean-paul-4.jpeg"/>
-                <p>Jean Paul Perez-Saldarriaga is a Colombian-American multidisciplinary designer and musician based in Queens, NY. His practice specializes in lo-fi art and tangible media. His professional experience includes over three years as an in-house web designer for JWiz Inc. and over five years of independent freelancing. He holds a BA in Media Studies from CUNY Hunter College and serves as a Board Member for the sexual wellness non-profit organization, My Exxxperience.</p>
-                <p>Jean Paul&#39;s work is an extension of his love for shoegaze, analog craft, and the local DIY music scene. He is also 1/5 of the alternative rock band, swimteam VHS.</p>
-                <p lang="es">Jean Paul Perez-Saldarriaga es un diseñador multidisciplinario y músico colombo-americano radicado en Queens, NY. Su práctica se especializa en el arte de baja-fidelidad y los medios tangibles. Su experiencia profesional incluye más de tres años como diseñador web vinculado a JWiz Inc. y más de cinco años de colaboración independiente. Cuenta con una licenciatura en Estudios de Medios de CUNY Hunter College y forma parte de la junta directiva de la organización sin ánimo de lucro de bienestar sexual, My Exxxperience.</p>
-                <p lang="es">El trabajo de Jean Paul es una extensión de su amor por el shoegaze, el oficio analógico, y la escena musical autogestionada local. También es 1/5 de la banda de rock alternativo, swimteam VHS.</p>
                 <ul>
                     <li><a href="mailto:me@jeanpaul.info">me@jeanpaul.info</a></li>
                     <li><a href="https://instagram.com/angryson.404">@angryson.404</a></li>
                 </ul>
-                
+                <p>Jean Paul Perez&#8209;Saldarriaga is a Colombian&#8209;American multidisciplinary designer and musician based in Queens, NY. His practice specializes in lo&#8209;fi art and tangible media. His professional experience includes over three years as an in&#8209;house web designer for JWiz Inc. and over five years of independent freelancing. He holds a BA in Media Studies from CUNY Hunter College and serves as a Board Member for the sexual wellness non&#8209;profit organization, My Exxxperience.</p>
+                <p>Jean Paul&#39;s work is an extension of his love for shoegaze, analog craft, and the local DIY music scene. He is also 1/5 of the alternative rock band, swimteam VHS.</p>
+                <p lang="es">Jean Paul Perez&#8209;Saldarriaga es un diseñador multidisciplinario y músico colombo&#8209;americano radicado en Queens, NY. Su práctica se especializa en el arte de baja&#8209;fidelidad y los medios tangibles. Su experiencia profesional incluye más de tres años como diseñador web vinculado a JWiz Inc. y más de cinco años de colaboración independiente. Cuenta con una licenciatura en Estudios de Medios de CUNY Hunter College y forma parte de la junta directiva de la organización sin ánimo de lucro de bienestar sexual, My Exxxperience.</p>
+                <p lang="es">El trabajo de Jean Paul es una extensión de su amor por el shoegaze, el oficio analógico, y la escena musical autogestionada local. También es 1/5 de la banda de rock alternativo, swimteam VHS.</p>                
             </aside>
             <main class="right-col">
                 <nav>
@@ -45,6 +45,7 @@ image = "" //1200x630 img in /public folder
                 <slot/>
             </main>
         </div>
+        <ToTop/>
     </body>
     <style is:global>
         @font-face {
@@ -140,6 +141,7 @@ image = "" //1200x630 img in /public folder
         .left-col{ 
             background-color: var(--lgrey);
             padding: var(--s4) var(--s3);
+            padding-right: var(--s6);
         }
 
         .right-col{
