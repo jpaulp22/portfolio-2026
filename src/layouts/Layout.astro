@@ -26,9 +26,9 @@ image = "" //1200x630 img in /public folder
     <body>
         <div class="container">
             <aside class="left-col">
-                <img class="profile-img" src="../../public/img/jean-paul-4.jpeg"/>
+                <img class="profile-img" src="/img/jean-paul-4.jpeg"/>
                 <p>Jean Paul Perez-Saldarriaga is a Colombian-American multidisciplinary designer and musician based in Queens, NY. His practice specializes in lo-fi art and tangible media. His professional experience includes over three years as an in-house web designer for JWiz Inc. and over five years of independent freelancing. He holds a BA in Media Studies from CUNY Hunter College and serves as a Board Member for the sexual wellness non-profit organization, My Exxxperience.</p>
-                <p>Jean Paul’s work is an extension of his love for shoegaze, analog craft, and the local DIY music scene. He is also 1/5 of the alternative rock band, swimteam VHS.</p>
+                <p>Jean Paul&#39;s work is an extension of his love for shoegaze, analog craft, and the local DIY music scene. He is also 1/5 of the alternative rock band, swimteam VHS.</p>
                 <p lang="es">Jean Paul Perez-Saldarriaga es un diseñador multidisciplinario y músico colombo-americano radicado en Queens, NY. Su práctica se especializa en el arte de baja-fidelidad y los medios tangibles. Su experiencia profesional incluye más de tres años como diseñador web vinculado a JWiz Inc. y más de cinco años de colaboración independiente. Cuenta con una licenciatura en Estudios de Medios de CUNY Hunter College y forma parte de la junta directiva de la organización sin ánimo de lucro de bienestar sexual, My Exxxperience.</p>
                 <p lang="es">El trabajo de Jean Paul es una extensión de su amor por el shoegaze, el oficio analógico, y la escena musical autogestionada local. También es 1/5 de la banda de rock alternativo, swimteam VHS.</p>
                 <ul>
@@ -39,7 +39,8 @@ image = "" //1200x630 img in /public folder
             </aside>
             <main class="right-col">
                 <nav>
-                    <a href="">HOME / INICIO</a>
+                    <a href="/" aria-label="Home">HOME / INICIO</a>
+                    <a href="/works-obras" aria-label="Works">WORKS / OBRAS</a>
                 </nav>
                 <slot/>
             </main>
@@ -114,6 +115,13 @@ image = "" //1200x630 img in /public folder
             margin: 0;
         }
 
+        a{
+            font-family: var(--font-mono);
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: var(--w-light);
+        }
+
         body{ margin: 0; padding: 0; }
         h1{ font-weight: var(--w-bold); }
         h2{ font-weight: var(--w-med); }
@@ -131,10 +139,18 @@ image = "" //1200x630 img in /public folder
 
         .left-col{ 
             background-color: var(--lgrey);
-            padding-left: var(--s3);                       
-            padding-right: var(--s3);
-            padding-top: var(--s3);
-            padding-bottom: var(--s3);            
+            padding: var(--s4) var(--s3);
+        }
+
+        .right-col{
+            padding: var(--s3);
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
         }
 
         .profile-img{
