@@ -7,7 +7,7 @@ import Icon from '../components/Icon.astro';
 	<div class="hero-container">
 		<div class="grid-top"></div>
 		<div class="grid-mid"><Icon/></div>
-		<div class="'grid-bottom">
+		<div class="grid-bottom">
 			<a href="#about" class="scroll-link">
 				<span class="chevron">v</span>
 				<span>ABOUT ME / SOBRE MÍ</span>
@@ -27,9 +27,29 @@ import Icon from '../components/Icon.astro';
 		gap: var(--s6);
 	}
 
+	:global(.icon){
+        height: auto;
+        display: block;
+        color: var(--black);
+    }
+
 	.scroll-link{
 		display: flex;
 		align-items: center;
 		gap: var(--s3);
+	}
+
+	@media (min-width: 992px){
+		.hero-container{
+			display: block;
+		}
+
+		.grid-top, .grid-bottom{
+			display: none;
+		}
+
+		:global(.icon){
+			width: 19.4rem;
+		}
 	}
 </style>
