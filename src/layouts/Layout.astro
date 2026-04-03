@@ -3,10 +3,11 @@
 import ToTop from '../components/ToTop.astro';
 import { Image } from 'astro:assets';
 import Portrait from '../assets/jean-paul-4.jpeg';
+import { ClientRouter } from 'astro:transitions';
 const { 
 title = "Jean Paul Perez-Saldarriaga - Official Website",
 description = "Jean Paul Perez-Saldarriaga is a Colombian-American multidiscplinary designer and musician based in Queens, NY specializing in lo-fi art and tangible media.",
-image = "" //1200x630 img in /public folder
+image = "/img/jean-paul-opengraph.png"
 } = Astro.props;
 ---
 
@@ -14,6 +15,8 @@ image = "" //1200x630 img in /public folder
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+        <link rel="icon" type="image/png" href="/favicon.png"/>
         <title>{title}</title>
         <meta name="description" content={description}>
         <meta property="og:type" content="website">
@@ -24,11 +27,11 @@ image = "" //1200x630 img in /public folder
         <meta name="twitter:title" content={title}>
         <meta name="twitter:description" content={description}>
         <meta name="twitter:image" content={image}>
-
+        <ClientRouter/>
     </head>
     <body>
         <div class="container">
-            <aside class="left-col" id="about">
+            <aside class="left-col" id="about" transition:persist>
                 <Image src={Portrait} alt="Jean Paul Perez-Saldarriaga" class="profile-img" format="webp" width={400}/>
                 <ul>
                     <li><a href="mailto:me@jeanpaul.info">me@jeanpaul.info</a></li>
@@ -40,11 +43,11 @@ image = "" //1200x630 img in /public folder
                 <p lang="es">El trabajo de Jean Paul es una extensión de su amor por el shoegaze, el oficio analógico, y la escena musical autogestionada local. También es 1/5 de la banda de rock alternativo, swimteam VHS.</p>                
             </aside>
             <main class="right-col">
-                <nav>
+                <nav transition:persist>
                     <a href="/" aria-label="Home">HOME / INICIO</a>
                     <a href="/works-obras" aria-label="Works">WORKS / OBRAS</a>
                 </nav>
-                <slot/>
+                <div class="icon-wrapper"><slot/></div>
             </main>
         </div>
         <ToTop/>
@@ -82,6 +85,12 @@ image = "" //1200x630 img in /public folder
             font-display: auto;
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         :root{
             --font-sans: 'Ancizar Sans', system-ui, sans-serif;
             --font-mono: 'Sometype Mono', monospace;
@@ -112,6 +121,10 @@ image = "" //1200x630 img in /public folder
             --s6: 5.5625rem;
         }
 
+        .left-col::-webkit-scrollbar, .right-col::-webkit-scrollbar{
+            display: none;
+        }
+
         html{
             background-color: var(--white);
             font-family: var(--font-sans);
@@ -134,7 +147,7 @@ image = "" //1200x630 img in /public folder
             letter-spacing: .05em;
         }
 
-        body{ margin: 0; padding: 0; }
+        body{ margin: 0; padding: 0; height: 100%; }
         h1{ font-weight: var(--w-bold); }
         h2{ font-weight: var(--w-med); }
 
@@ -147,16 +160,33 @@ image = "" //1200x630 img in /public folder
         .container{
             display: flex;
             flex-direction: column-reverse;
+            height: 100%;
         }
 
         .left-col{ 
             background-color: var(--lgrey);
             padding: var(--s4) var(--s3);
             padding-right: var(--s6);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            -webkit-mask-image: linear-gradient(
+                to bottom, 
+                black 0%, 
+                black 94%, 
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to bottom, 
+                black 0%, 
+                black 94%, 
+                transparent 100%
+            );
         }
 
         .right-col{
             padding: var(--s3);
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         nav{
@@ -165,6 +195,7 @@ image = "" //1200x630 img in /public folder
             align-items: center;
             font-family: var(--font-mono);
             font-size: var(--fs-sm);
+            view-transition-name: gallery-fade;
         }
 
         nav a{
@@ -200,7 +231,17 @@ image = "" //1200x630 img in /public folder
             margin: var(--s3) 0 var(--s2) 0;
         }
 
+        .left-col > *:last-child{
+            margin-bottom: 0;
+        }
+
         @media (min-width: 992px){
+            html, body{
+                height: 100vh;
+                overflow: hidden;
+                min-height: 1319.53px;
+            }
+
             .container{
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
@@ -209,22 +250,32 @@ image = "" //1200x630 img in /public folder
             .left-col{
                 grid-column: span 4;
                 padding-right: var(--s3);
-            }
-            .right-col{ 
-                grid-column: span 8;
-                padding: var(--s4) var(--s3);
+                height: 100vh;
+                overflow-y: auto;
             }
 
-            .profile-img{
-                width: 8rem;
+            .right-col{
+                grid-column: span 8;
+                padding: var(--s4) var(--s3);
+                height: 100vh;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
             }
 
             .left-col a{
                 font-size: var(--fs-xs);
             }
 
+            .icon-wrapper{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
             p{
-                font-size: var(--fs-xs);
+                font-size: var(--fs-sm);
             }
         }
     </style>
