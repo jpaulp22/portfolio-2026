@@ -1,7 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProjectAccordion from '../components/ProjectAccordion.astro';
+
+const
 ---
 
 <Layout title="Works / Obras">
-    <h1>My Projects</h1>
+    <div class="projects-section active-actual">
+        <h1>ACTIVE / ACTUAL</h1>
+    </div>
+    <div class="projects-section archive-archivo">
+        <h1>ARCHIVE / ARCHIVO</h1>
+    </div>
 </Layout>
+
+<style>
+    h1{
+        font-family: var(--font-mono);
+        font-size: var(--fs-md);
+    }
+</style>

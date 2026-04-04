@@ -1,18 +1,33 @@
 <button id="to-top" aria-label="Scroll to top" class="hidden"><span class="chevron">TOP</span></button>
 
 <script>
-    const toTop = document.getElementById('to-top');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            toTop.classList.remove('hidden');
-        } else {
-            toTop.classList.add('hidden');
+    const handleScroll = () => {
+        const toTop = document.querySelector('#to-top');
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+        if (toTop) {
+            if (scrollY > 400) {
+                toTop.style.opacity = "1";
+                toTop.style.pointerEvents = "auto";
+                toTop.style.transform = "translateY(0)";
+            } else {
+                toTop.style.opacity = "0";
+                toTop.style.pointerEvents = "none";
+                toTop.style.transform = "translateY(10px)";
+            }
         }
-    });
+    };
 
-    toTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0 });
-    });
+    const setupToTop = () => {
+        const toTop = document.querySelector('#to-top');
+        if (toTop) {
+            toTop.onclick = () => {
+                window.scrollTo({ top: 0 });
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
+        }
+    };
+    document.addEventListener('astro:page-load', setupToTop);
 </script>
 
 <style>
