@@ -1,31 +1,44 @@
 ---
 const { project } = Astro.props;
-const { title, year, role, mission, phases, spanish } = project;
+const { title, year, role, mission, phases } = project;
 ---
 
 <details class="project-dropdown">
-    <summary>{title}&#8211;{year}</summary>
+    <summary>{title} / {year}</summary>
     <div class="content">
-        <div class="lang-block en">
-            <p>{role}</p>
-            <p>{mission}</p>
+        <p>{role}</p>
+        <div class="lang-block en">     
+            {mission && (
+                <p>{mission.en}</p>
+            )}       
 
-            {phases.map((phase) => (
+            {phases && phases.map((p) => (
                 <div class="phase-item">
-                    <h2>{phase.header}</h2>
-                    <p>{phase.text}</p>
+                    {(p.en.preheader || p.en.header) && (
+                        <h2>
+                            {p.en.preheader && <span class="pre">{p.en.preheader} </span>}
+                            {p.en.header}
+                        </h2>
+                    )}
+                    <p>{p.en.text}</p>
                 </div>
             ))}
         </div>
-        <hr class="lang-divider"/>
-        <div class="lang-block es">
-            <p>{es.role}</p>
-            <p>{es.mission}</p>
 
-            {es.phases.map((phase) => (
+        <hr class="lang-divider"/>
+
+        <div class="lang-block es">
+            <p>{mission.es}</p>
+
+            {phases && phases.map((p) => (
                 <div class="phase-item">
-                    <h2>{phase.header}</h2>
-                    <p>{phase.text}</p>
+                    {(p.es.preheader || p.es.header) && (
+                        <h2>
+                            {p.es.preheader && <span class="pre">{p.es.preheader} </span>}
+                            {p.es.header}
+                        </h2>
+                    )}
+                    <p>{p.en.text}</p>
                 </div>
             ))}
         </div>

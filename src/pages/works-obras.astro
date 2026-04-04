@@ -2,7 +2,98 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectAccordion from '../components/ProjectAccordion.astro';
 
-const
+const swimteam = {
+    title: 'swimteam VHS',
+    year: '2024 \u2023',
+    role: 'Creative Director, Administrator, Musician \u2014 Director Creativo, Administrador, Músico',
+    mission: {
+        en: 'Ongoing artistic direction and administration for swimteam VHS, a Brooklyn\u2011based alternative rock band.',
+        es: 'Dirección artística y administración en curso para swimteam VHS, una banda de rock alternativo con sede en Brooklyn.'
+    },
+    phases: [
+        {
+            en: { preheader: 'IN PROGRESS', header: 'PHASE 2:', text: 'Managing strategic rebrand.'},
+            es: { preheader: 'EN DESARROLLO', header: 'FASE 2:', text: 'Gestión de rediseño estratégico de marca.'}
+        },
+        {
+            en: { header: 'PHASE 1: ', text: 'Translation of atmospheric textures and post\u2011rock/shoegaze dynamism into a visual identity. Scope encompasses web design, video editing, social media content. Production of physical assets includes CD packaging, booklets, posters, and apparel via relief printing.'},
+            es: { header: 'FASE 1: ', text: 'Traducción de texturas atmosféricas y dinamismo post\u2011rock/shoegaze a una identidad visual. El alcance abarca diseño web, edición de video y contenido para redes sociales. La producción de piezas físicas incluye empaques de CD, libretos, carteles, y prendas mediante grabado en relieve.'}
+        }
+    ]
+}
+
+const my3x = {
+    title: 'My Exxxperience',
+    year: '2025 \u2023',
+    role: 'Board Member, Designer \u2014 Miembro de la Junta, Diseñador',
+    phases: [
+        {
+            en: { preheader: 'IN PROGRESS ', text: 'Develop a unified brand identity for the sexual wellness non\u2011profit, My Exxxperience, to bridge the gap between community outreach and digital presence. Scope includes brand identity document, web design, social media content, workshop posters and community event planning.'},
+            es: { preheader: 'EN DESARROLLO', text: 'Desarrollo de una identidad de marca unificada para la organización sin ánimo de lucro de bienestar sexual, My Exxxperience. El proyecto busca alinear el alcance comunitario con la presencia digital. El alcance incluye guía de estilo, diseño web, contenido para redes sociales, carteles para talleres y planificación de eventos comunitarios.'}
+        }
+    ]
+}
+
+const sbnb = {
+    title: 'Simply Brie and Berry',
+    year: '2026 \u2023',
+    role: 'Designer \u2014 Diseñador',
+    phases: [
+        {
+            en: { preheader: 'IN PROGRESS ', text: 'Creation of a brand identity for a startup charcuterie business. Scope includes the design of a logo and custom packaging.'},
+            es: { preheader: 'EN DESARROLLO ', text: 'Creación de una identidad de marca para una empresa emergente de charcuteria. El alcance incluye el diseño de un logotipo y empaques personalizados.'}
+        }
+    ]
+}
+
+const rebrand = {
+    title: 'Personal Rebrand',
+    year: '2026',
+    role: 'Designer \u2014 Diseñador',
+    phases: [
+        {
+            en: { text: 'Rebrand of personal visual identity to reflect ancestral Colombian heritage. Derived from research into pre\u2011Hispanic art across the Colombian Andes, the project includes a primary icon and a bilingual portfolio.'}
+            es: { text: 'Rediseño de identidad visual para reflejar la herencia ancestral colombiana. Derivado de la investigación del arte prehispánico de las cordilleras colombianas, el proyecto incluye un icono principal y un portafolio bilingüe.'}
+        }
+    ]
+}
+
+const jwiz = {
+    title: 'JWiz Inc.',
+    year: '2022 \u2023',
+    role: 'Design Lead \u2014 Lider de Diseño',
+    phases: [
+        {
+            en: { text: 'Ongoing multidisciplinary design and development for JWiz Inc., a marketing agency based in Queens, NY. Scope encompasses web design, front\u2011end development, and graphic design for digital and print media. Lead oversight of design projects across internal and client\u2011facing assets.'},
+            es: { text: 'Diseño y desarrollo multidisciplinario en curso para JWiz Inc., una agencia de marketing con sede en Queens, NY. El alcance abarca diseño web, desarrollo front\u2011end y diseño gráfico para medios digitales e impresos. Gestión y supervisión de proyectos de diseño para activos internos y externos.'}
+        }
+    ]
+}
+
+const arepalicious = {
+    title: 'Arepalicious',
+    year: '2019 \u2023 2023',
+    role: 'Marketing & Design Coordinator \u2014 Coordinador Creativo y de Comunicaciones',
+    phases: [
+        {
+            en: { text: 'Multidisciplinary design for a local Colombian restaurant. Deliverables included menu design, web design, and social media content production.'},
+            es: { text: 'Diseño multidisciplinario para un restaurante colombiano local. Los entregables incluyeron diseño de menús, diseño web y producción de contenido para redes sociales.'}
+        }
+    ]
+}
+
+const hulenni = {
+    title: 'Hulenni',
+    year: '2023', //CONFIRM THIS??
+    role: 'Web Developer / Designer \u2014 Desarrollador / Diseñador Web',
+    phases: [
+        {
+            en: { text: 'Development of a minimalist e\u2011commerce website for a music producer. Scope included a three\u2011page website, Beatstars API integration, and Mailchimp synchronization.'},
+            es: { text: 'Desarrollo de un sitio web de comercio electrónico minimalista para un productor musical. El alcance incluyó un sitio web de tres páginas, integración de la API de Beatstars y sincronización con Mailchimp.'}
+        }
+    ]
+}
+
 ---
 
 <Layout title="Works / Obras">
