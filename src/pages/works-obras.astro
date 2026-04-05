@@ -2,9 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ProjectAccordion from '../components/ProjectAccordion.astro';
 
+//ACTIVE
 const swimteam = {
     title: 'swimteam VHS',
-    year: '2024 \u2023',
+    year: '2024 \u2013',
     role: 'Creative Director, Administrator, Musician \u2014 Director Creativo, Administrador, Músico',
     mission: {
         en: 'Ongoing artistic direction and administration for swimteam VHS, a Brooklyn\u2011based alternative rock band.',
@@ -20,11 +21,11 @@ const swimteam = {
             es: { header: 'FASE 1: ', text: 'Traducción de texturas atmosféricas y dinamismo post\u2011rock/shoegaze a una identidad visual. El alcance abarca diseño web, edición de video y contenido para redes sociales. La producción de piezas físicas incluye empaques de CD, libretos, carteles, y prendas mediante grabado en relieve.'}
         }
     ]
-}
+};
 
 const my3x = {
     title: 'My Exxxperience',
-    year: '2025 \u2023',
+    year: '2025 \u2013',
     role: 'Board Member, Designer \u2014 Miembro de la Junta, Diseñador',
     phases: [
         {
@@ -32,11 +33,11 @@ const my3x = {
             es: { preheader: 'EN DESARROLLO', text: 'Desarrollo de una identidad de marca unificada para la organización sin ánimo de lucro de bienestar sexual, My Exxxperience. El proyecto busca alinear el alcance comunitario con la presencia digital. El alcance incluye guía de estilo, diseño web, contenido para redes sociales, carteles para talleres y planificación de eventos comunitarios.'}
         }
     ]
-}
+};
 
 const sbnb = {
     title: 'Simply Brie and Berry',
-    year: '2026 \u2023',
+    year: '2026 \u2013',
     role: 'Designer \u2014 Diseñador',
     phases: [
         {
@@ -44,7 +45,7 @@ const sbnb = {
             es: { preheader: 'EN DESARROLLO ', text: 'Creación de una identidad de marca para una empresa emergente de charcuteria. El alcance incluye el diseño de un logotipo y empaques personalizados.'}
         }
     ]
-}
+};
 
 const rebrand = {
     title: 'Personal Rebrand',
@@ -52,15 +53,15 @@ const rebrand = {
     role: 'Designer \u2014 Diseñador',
     phases: [
         {
-            en: { text: 'Rebrand of personal visual identity to reflect ancestral Colombian heritage. Derived from research into pre\u2011Hispanic art across the Colombian Andes, the project includes a primary icon and a bilingual portfolio.'}
+            en: { text: 'Rebrand of personal visual identity to reflect ancestral Colombian heritage. Derived from research into pre\u2011Hispanic art across the Colombian Andes, the project includes a primary icon and a bilingual portfolio.'},
             es: { text: 'Rediseño de identidad visual para reflejar la herencia ancestral colombiana. Derivado de la investigación del arte prehispánico de las cordilleras colombianas, el proyecto incluye un icono principal y un portafolio bilingüe.'}
         }
     ]
-}
+};
 
 const jwiz = {
     title: 'JWiz Inc.',
-    year: '2022 \u2023',
+    year: '2022 \u2013',
     role: 'Design Lead \u2014 Lider de Diseño',
     phases: [
         {
@@ -68,11 +69,13 @@ const jwiz = {
             es: { text: 'Diseño y desarrollo multidisciplinario en curso para JWiz Inc., una agencia de marketing con sede en Queens, NY. El alcance abarca diseño web, desarrollo front\u2011end y diseño gráfico para medios digitales e impresos. Gestión y supervisión de proyectos de diseño para activos internos y externos.'}
         }
     ]
-}
+};
 
+
+// ARCHIVED
 const arepalicious = {
     title: 'Arepalicious',
-    year: '2019 \u2023 2023',
+    year: '2019 \u2013 2023',
     role: 'Marketing & Design Coordinator \u2014 Coordinador Creativo y de Comunicaciones',
     phases: [
         {
@@ -80,7 +83,7 @@ const arepalicious = {
             es: { text: 'Diseño multidisciplinario para un restaurante colombiano local. Los entregables incluyeron diseño de menús, diseño web y producción de contenido para redes sociales.'}
         }
     ]
-}
+};
 
 const hulenni = {
     title: 'Hulenni',
@@ -92,22 +95,42 @@ const hulenni = {
             es: { text: 'Desarrollo de un sitio web de comercio electrónico minimalista para un productor musical. El alcance incluyó un sitio web de tres páginas, integración de la API de Beatstars y sincronización con Mailchimp.'}
         }
     ]
-}
+};
+
+const activeProjects = [ swimteam, my3x, sbnb, rebrand, jwiz ];
+const archivedProjects = [ arepalicious, hulenni ];
 
 ---
 
 <Layout title="Works / Obras">
-    <div class="projects-section active-actual">
+    <section class="projects-section active-actual">
         <h1>ACTIVE / ACTUAL</h1>
-    </div>
-    <div class="projects-section archive-archivo">
+        {activeProjects.map((proj) => (
+            <ProjectAccordion project={proj}/>
+        ))} 
+    </section>
+    <section class="projects-section archive-archivo">
         <h1>ARCHIVE / ARCHIVO</h1>
-    </div>
+        {archivedProjects.map((proj) => (
+            <ProjectAccordion project={proj}/>
+        ))} 
+    </section>
 </Layout>
 
 <style>
+    :global(.wrapper){
+        padding: var(--s4) 0;
+    }
+
     h1{
         font-family: var(--font-mono);
         font-size: var(--fs-md);
+        font-weight: var(--w-light);
+        margin-bottom: var(--s1);
+        letter-spacing: .1em;
+    }
+
+    .active-actual{
+        margin-bottom: var(--s5);
     }
 </style>

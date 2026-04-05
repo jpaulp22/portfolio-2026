@@ -4,7 +4,7 @@ const { title, year, role, mission, phases } = project;
 ---
 
 <details class="project-dropdown">
-    <summary>{title} / {year}</summary>
+    <summary><h2>{title} : {year}</h2></summary>
     <div class="content">
         <p>{role}</p>
         <div class="lang-block en">     
@@ -15,10 +15,10 @@ const { title, year, role, mission, phases } = project;
             {phases && phases.map((p) => (
                 <div class="phase-item">
                     {(p.en.preheader || p.en.header) && (
-                        <h2>
+                        <h3>
                             {p.en.preheader && <span class="pre">{p.en.preheader} </span>}
                             {p.en.header}
-                        </h2>
+                        </h3>
                     )}
                     <p>{p.en.text}</p>
                 </div>
@@ -28,15 +28,17 @@ const { title, year, role, mission, phases } = project;
         <hr class="lang-divider"/>
 
         <div class="lang-block es">
-            <p>{mission.es}</p>
+            {mission && (
+                <p>{mission.es}</p>
+            )}
 
             {phases && phases.map((p) => (
                 <div class="phase-item">
                     {(p.es.preheader || p.es.header) && (
-                        <h2>
+                        <h3>
                             {p.es.preheader && <span class="pre">{p.es.preheader} </span>}
                             {p.es.header}
-                        </h2>
+                        </h3>
                     )}
                     <p>{p.en.text}</p>
                 </div>
@@ -48,5 +50,38 @@ const { title, year, role, mission, phases } = project;
 </details>
 
 <style>
+    .project-dropdown{
+        margin-bottom: var(--s1);
+    }
 
+    .project-dropdown:last-child{
+        margin-bottom: 0;
+    }
+
+    .project-dropdown summary{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-family: var(--font-mono);
+    }
+
+    .project-dropdown summary::-webkit-details-marker, .project-dropdown summary::marker {
+        display: none !important;
+        content: "";
+    }
+
+    .project-dropdown h2{
+        display: inline;
+        font-size: var(--fs-sm);
+        font-weight: var(--w-bold);
+    }
+
+    .project-dropdown .phase-item{
+        margin-bottom: var(--s1);
+    }
+
+    .project-dropdown .phase-item h3, .project-dropdown .phase-item p{
+        display: inline;
+    }
 </style>
