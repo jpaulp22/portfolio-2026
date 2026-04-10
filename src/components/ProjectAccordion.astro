@@ -40,7 +40,7 @@ const { title, year, role, mission, phases } = project;
                             {p.es.header}
                         </h3>
                     )}
-                    <p>{p.en.text}</p>
+                    <p>{p.es.text}</p>
                 </div>
             ))}
         </div>
@@ -71,6 +71,26 @@ const { title, year, role, mission, phases } = project;
         content: "";
     }
 
+    .project-dropdown .content p, .project-dropdown .content h3{
+        font-size: var(--fs-xs);
+    }
+
+    .project-dropdown .content p{
+        margin: 0;
+    }
+
+    .project-dropdown .content > p:first-child{
+        font-style: italic;
+    }
+
+    .project-dropdown .lang-block{
+        padding: var(--s2) 0;
+    }
+
+    .project-dropdown .es{
+        color: var(--dgrey);
+    }
+
     .project-dropdown h2{
         display: inline;
         font-size: var(--fs-sm);
@@ -78,10 +98,20 @@ const { title, year, role, mission, phases } = project;
     }
 
     .project-dropdown .phase-item{
-        margin-bottom: var(--s1);
+        margin: var(--s1) 0;
     }
 
     .project-dropdown .phase-item h3, .project-dropdown .phase-item p{
         display: inline;
+    }
+
+    @media (min-width: 992px){
+        .project-dropdown h2{
+            font-size: var(--fs-md);
+        }
+
+        .project-dropdown .content p, .project-dropdown .content h3{
+            font-size: var(--fs-sm);
+        }
     }
 </style>

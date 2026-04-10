@@ -42,7 +42,7 @@ const sbnb = {
     phases: [
         {
             en: { preheader: 'IN PROGRESS ', text: 'Creation of a brand identity for a startup charcuterie business. Scope includes the design of a logo and custom packaging.'},
-            es: { preheader: 'EN DESARROLLO ', text: 'Creación de una identidad de marca para una empresa emergente de charcuteria. El alcance incluye el diseño de un logotipo y empaques personalizados.'}
+            es: { preheader: 'EN DESARROLLO ', text: 'Creación de una identidad de marca para una empresa emergente de charcutería. El alcance incluye el diseño de un logotipo y empaques personalizados.'}
         }
     ]
 };
@@ -120,11 +120,12 @@ const archivedProjects = [ arepalicious, hulenni ];
 <style>
     :global(.wrapper){
         padding: var(--s4) 0;
+        padding-right: var(--s6);
     }
 
     h1{
         font-family: var(--font-mono);
-        font-size: var(--fs-md);
+        font-size: var(--fs-xs);
         font-weight: var(--w-light);
         margin-bottom: var(--s1);
         letter-spacing: .1em;
@@ -133,4 +134,27 @@ const archivedProjects = [ arepalicious, hulenni ];
     .active-actual{
         margin-bottom: var(--s5);
     }
+
+    @media (min-width: 992px){
+        :global(.wrapper){
+            flex-direction: column;
+            padding: var(--s4) var(--s3);
+            align-items: start;
+            justify-content: start;
+        }
+    }
 </style>
+
+<script>
+    const accordions = document.querySelectorAll('.project-dropdown');
+
+    accordions.forEach((targetDetail) => {
+        targetDetail.addEventListener('click', () => {
+            accordions.forEach((detail) => {
+                if (detail !== targetDetail) {
+                    detail.removeAttribute('open');
+                }
+            });
+        });
+    });
+</script>
