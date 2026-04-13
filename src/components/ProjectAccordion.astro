@@ -1,6 +1,6 @@
 ---
 const { project } = Astro.props;
-const { title, year, role, mission, phases } = project;
+const { title, year, role, mission, phases, media } = project;
 ---
 
 <details class="project-dropdown">
@@ -12,7 +12,7 @@ const { title, year, role, mission, phases } = project;
                 <p>{mission.en}</p>
             )}       
 
-            {phases && phases.map((p) => (
+            {phases && phases.map((p: any) => (
                 <div class="phase-item">
                     {(p.en.preheader || p.en.header) && (
                         <h3>
@@ -32,7 +32,7 @@ const { title, year, role, mission, phases } = project;
                 <p>{mission.es}</p>
             )}
 
-            {phases && phases.map((p) => (
+            {phases && phases.map((p: any) => (
                 <div class="phase-item">
                     {(p.es.preheader || p.es.header) && (
                         <h3>
@@ -44,7 +44,27 @@ const { title, year, role, mission, phases } = project;
                 </div>
             ))}
         </div>
+        {media && media.length > 0 && (
+            <div class="media-gallery">
+                {media.map((item: any) => (
+                    <figure class="media-container">
+                        <div class="media-frame">
+                            {item.type === 'video' ? (
+                                <video autoplay loop muted playsinline poster={item.poster}>
+                                    <source src={item.src} type="video/mp4">
+                                </video>
+                            ) : (
+                                <img src={item.src} alt={`${title} project visual`} loading="lazy">
+                            )}
+                        </div>
 
+                        {item.caption && (
+                            <figcaption class="media-caption">{item.caption}</figcaption>
+                        )}
+                    </figure>
+                ))}
+            </div>
+        )}
         <slot/>
     </div>
 </details>
@@ -52,6 +72,7 @@ const { title, year, role, mission, phases } = project;
 <style>
     .project-dropdown{
         margin-bottom: var(--s1);
+        max-width: 50rem;
     }
 
     .project-dropdown:last-child{
@@ -103,6 +124,45 @@ const { title, year, role, mission, phases } = project;
 
     .project-dropdown .phase-item h3, .project-dropdown .phase-item p{
         display: inline;
+    }
+
+    .media-container{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--s2);
+    }
+
+    .media-gallery{
+        display: flex;
+        flex-direction: column;
+        gap: var(--s2);
+    }
+
+    .media-frame{
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background-color: var(--black);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .media-frame img, .media-frame video{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .media-caption{
+        font-family: var(--font-sans);
+        font-size: var(--fs-xs);
+        color: var(--accent);
+        text-transform: lowercase;
+        letter-spacing: .05em;
     }
 
     @media (min-width: 992px){

@@ -2,7 +2,7 @@
 
 <script>
     const handleScroll = () => {
-        const toTop = document.querySelector('#to-top');
+        const toTop = document.querySelector('#to-top') as HTMLElement | null;
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         if (toTop) {
             if (scrollY > 400) {
@@ -20,9 +20,9 @@
     const setupToTop = () => {
         const toTop = document.querySelector('#to-top');
         if (toTop) {
-            toTop.onclick = () => {
+            toTop.addEventListener('click', () => {
                 window.scrollTo({ top: 0 });
-            };
+            });
             window.addEventListener('scroll', handleScroll);
             handleScroll();
         }
