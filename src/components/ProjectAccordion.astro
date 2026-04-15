@@ -175,3 +175,14 @@ const { title, year, role, mission, phases, media } = project;
         }
     }
 </style>
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+        // Re-trigger play in case the transition paused it
+        video.play().catch(error => {
+            console.log("Autoplay was prevented, waiting for interaction.");
+        });
+        });
+    });
+</script>
