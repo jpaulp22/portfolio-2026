@@ -2,7 +2,7 @@
 /* Layout.astro : grid structure. */
 import ToTop from '../components/ToTop.astro';
 import { Image } from 'astro:assets';
-import Portrait from '../assets/jean-paul-4.jpeg';
+import Portrait from '../assets/jean-paul.jpg';
 import { ClientRouter } from 'astro:transitions';
 const { 
 title = "Jean Paul Perez-Saldarriaga - Official Website",
@@ -32,7 +32,7 @@ image = "/img/jean-paul-opengraph.png"
     <body>
         <div class="container">
             <aside class="left-col" id="about" transition:persist>
-                <Image src={Portrait} alt="Jean Paul Perez-Saldarriaga" class="profile-img" format="webp" width={400}/>
+                <Image src={Portrait} alt="Jean Paul Perez-Saldarriaga" class="profile-img" format="webp" width={286}/>
                 <ul>
                     <li><a href="mailto:me@jeanpaul.info">me [at] jeanpaul [dot] info</a></li>
                     <li><a href="https://instagram.com/angryson.404">[at] angryson.404</a></li>
